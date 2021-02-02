@@ -1,7 +1,7 @@
 // ALCUNE FONTI SU COME SCRIVERE IL MODULO
-// AttributeFinderModule
+// AttributeFinderModule (classe astratta da cui partire per il modulo)
 // https://github.com/trustathsh/trustathsh-xacml-pdp/blob/6a2c80277dba1eb70aa98f8a48acdcd9760d5b2d/src/com/sun/xacml/finder/AttributeFinderModule.java
-// CurrentEnvModule (esempio di modulo, relativo percò agli attributi di ambiente)
+// CurrentEnvModule (esempio di modulo, relativo agli attributi di ambiente)
 // https://github.com/trustathsh/trustathsh-xacml-pdp/blob/6a2c80277dba1eb70aa98f8a48acdcd9760d5b2d/src/com/sun/xacml/finder/impl/CurrentEnvModule.java
 // esempio su Sun XACML docs
 // http://sunxacml.sourceforge.net/guide.html#extending-finder
