@@ -43,8 +43,8 @@
 
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
-        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
       </Apply>
     </Condition>
   </Rule>
@@ -69,8 +69,8 @@
 
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
-        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
       </Apply>
     </Condition>
   </Rule>
@@ -96,12 +96,12 @@
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
-          <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
         <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
-          <AttributeDesignator AttributeId="urn:progetto:names:id-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
-          <AttributeDesignator AttributeId="urn:progetto:names:id-gruppi-condivisione" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppi-condivisione" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
       </Apply>
     </Condition>
@@ -154,8 +154,8 @@
 
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
-        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
       </Apply>
     </Condition>
   </Rule>
@@ -180,8 +180,8 @@
 
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
-        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
       </Apply>
     </Condition>
   </Rule>
@@ -207,12 +207,12 @@
     <Condition>
       <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
         <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
-          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
-          <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
         <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
-          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
-          <AttributeDesignator AttributeId="urn:progetto:names:id-partecipanti-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-partecipanti-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
       </Apply>
     </Condition>
