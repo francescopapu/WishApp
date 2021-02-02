@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:1.0:policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PolicyId="PolicyListe" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+  <Description>
+    Disciplina l'accesso alle liste.
+  </Description>
+
+  <Target>
+    <Subjects>
+     <AnySubject/>
+    </Subjects>
+
+    <Resources>
+     <Resource>
+      <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Lista</AttributeValue>
+        <ResourceAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:resource-type"/>
+      </ResourceMatch>
+     </Resource>
+    </Resources>
+
+    <Actions>
+    <AnyAction/>
+    </Actions>
+  </Target>
+
+  <Rule RuleId="EliminaLista" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="ModificaLista" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="VisualizzaLista" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+        <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
+          <AttributeDesignator AttributeId="urn:progetto:names:id-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <AttributeDesignator AttributeId="urn:progetto:names:id-gruppi-condivisione" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="NessunaRegolaApplicabileListe" Effect="Deny"/>
+</Policy>
+
+<Policy xmlns="urn:oasis:names:tc:xacml:1.0:policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PolicyId="PolicyGruppi" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:permit-overrides">
+  <Description>
+    Disciplina l'accesso ai gruppi.
+  </Description>
+
+  <Target>
+    <Subjects>
+     <AnySubject/>
+    </Subjects>
+
+    <Resources>
+     <Resource>
+      <ResourceMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Gruppo</AttributeValue>
+        <ResourceAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:resource-type"/>
+      </ResourceMatch>
+     </Resource>
+    </Resources>
+
+    <Actions>
+    <AnyAction/>
+    </Actions>
+  </Target>
+
+  <Rule RuleId="EliminaGruppo" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="ModificaGruppo" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+        <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+        <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"></AttributeDesignator>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="VisualizzaGruppo" Effect="Permit" >
+    <Target>
+      <Subjects>
+       <AnySubject/>
+      </Subjects>
+
+      <Resources>
+        <AnyResource/>
+      </Resources>
+
+      <Actions>
+        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
+          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+        </ActionMatch>
+      </Actions>
+    </Target>
+
+    <Condition>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <AttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+        <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
+          <AttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          <AttributeDesignator AttributeId="urn:progetto:names:id-partecipanti-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+      </Apply>
+    </Condition>
+  </Rule>
+
+  <Rule RuleId="NessunaRegolaApplicabileGruppi" Effect="Deny"/>
+</Policy>
