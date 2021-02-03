@@ -99,7 +99,7 @@
           <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
-        <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:type-is-in">
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppi-condivisione" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
@@ -210,7 +210,7 @@
           <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
-        <Apply FunctionId="urn:oasis:names:tc:xacml:x.x:function:type-is-in">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:type-is-in">
           <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-partecipanti-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
