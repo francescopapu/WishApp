@@ -19,7 +19,7 @@
     </Resources>
 
     <Actions>
-    <AnyAction/>
+      <AnyAction/>
     </Actions>
   </Target>
 
@@ -34,16 +34,20 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
-    <Condition>
-      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+    <Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
         <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+      </Apply>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
         <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
       </Apply>
     </Condition>
@@ -60,16 +64,20 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
-    <Condition>
-      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+    <Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
         <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+      </Apply>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
         <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
       </Apply>
     </Condition>
@@ -86,22 +94,37 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
-    <Condition>
-      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
-        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+    <Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:or">
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
           <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
           <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
-        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:type-is-in">
-          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
-          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-gruppi-condivisione" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+      </Apply>
+
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-is-in">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+            <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          </Apply>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-liste-condivise" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+        </Apply>
+        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-is-in">
+          <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+            <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+          </Apply>
+          <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-partecipanti-gruppo" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
         </Apply>
       </Apply>
     </Condition>

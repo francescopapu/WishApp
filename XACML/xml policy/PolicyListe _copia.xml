@@ -42,6 +42,15 @@
         </Action>
       </Actions>
     </Target>
+
+    <Condition FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-equal">
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+        <SubjectAttributeDesignator AttributeId="urn:progetto:names:id-utente" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+      </Apply>
+      <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+        <ResourceAttributeDesignator AttributeId="urn:progetto:names:id-proprietario-lista" DataType="http://www.w3.org/2001/XMLSchema#integer"/>
+      </Apply>
+    </Condition>
   </Rule>
 
   <Rule RuleId="ModificaLista" Effect="Permit">

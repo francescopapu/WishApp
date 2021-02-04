@@ -34,10 +34,12 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Elimina</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
@@ -60,10 +62,12 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Modifica</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
@@ -86,10 +90,12 @@
       </Resources>
 
       <Actions>
-        <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
-          <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
-          <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
-        </ActionMatch>
+        <Action>
+          <ActionMatch MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Visualizza</AttributeValue>
+            <ActionAttributeDesignator DataType="http://www.w3.org/2001/XMLSchema#string" AttributeId="urn:progetto:names:action-type"/>
+          </ActionMatch>
+        </Action>
       </Actions>
     </Target>
 
