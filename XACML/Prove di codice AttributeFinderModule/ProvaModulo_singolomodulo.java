@@ -9,12 +9,13 @@
 // http://sunxacml.sourceforge.net/guide.html#extending-finder
 
 // il package in cui è inserito il moudlo
-package ...;
+package autorizzazione;
 
 // tutti i tipi di attributi necessari
 import com.sun.xacml.attr.AttributeDesignator;
 import com.sun.xacml.attr.AttributeValue;
 import com.sun.xacml.attr.BagAttribute;
+import com.sun.xacml.attr.IntegerAttribute;
 import com.sun.xacml.attr.StringAttribute;
 
 import com.sun.xacml.cond.EvaluationResult;
@@ -28,14 +29,16 @@ import com.sun.xacml.finder.AttributeFinderModule;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 public class ProvaModulo extends AttributeFinderModule {
 
   // può essere utile definire qui gli AttributeId
-  public static final String ATTRIBUTE_EXAMPLE_1 ="urn:oasis:names:tc:xacml:1.0:environment:current-time";
+  public static final String ATTRIBUTE_EXAMPLE_1 ="urn:progetto:names:id-proprietario-lista";
 
   // Returns true if this module supports retrieving attributes based on the
   // data provided in an AttributeDesignatorType. By default this method
@@ -70,7 +73,12 @@ public class ProvaModulo extends AttributeFinderModule {
   */
   public Set getSupportedIds() {
       HashSet set = new HashSet();
-      set.add(new URI(ATTRIBUTE_EXAMPLE_1));
+      try {
+		set.add(new URI(ATTRIBUTE_EXAMPLE_1));
+	} catch (URISyntaxException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       return set;
     }
 
@@ -85,7 +93,17 @@ public class ProvaModulo extends AttributeFinderModule {
   */
   // restituisce gli attributi trovati sulla base delle informazioni fornite dal Designator
   public EvaluationResult findAttribute(URI attributeType, URI attributeId, URI issuer, URI subjectCategory, EvaluationCtx context, int designatorType) {
-
+	  
+	  URI uri_type_integer = null;
+	  URI uri_id_lista = null;
+	try {
+		uri_type_integer = new URI("http://www.w3.org/2001/XMLSchema#integer");
+		uri_id_lista = new URI("urn:progetto:names:id-lista");
+	} catch (Exception e) {
+		// non mi importa
+	}
+	
+	
     if (designatorType != AttributeDesignator.RESOURCE_TARGET) {
       // assicuriamoci che l'attributo sia del tipo giusto (in questo esempio è di tipo resource)
       return new EvaluationResult(BagAttribute.createEmptyBag(attributeType));
@@ -96,7 +114,8 @@ public class ProvaModulo extends AttributeFinderModule {
 
     } else {
       // qui estraiamo le informazioni necessarie dai valori passati alla funzione findAttribute
-
+    	
+      /*
       // estraggo l'identificativo dell'attributo cercato (sotto forma di URI)
       String attributeid_st = attributeId.toString();
 
@@ -108,32 +127,39 @@ public class ProvaModulo extends AttributeFinderModule {
 
       // ricavo gli AttributeValue (StringAttribute o IntegerAttribute) dagli oggetti EvaluationResult
       StringAttribute attr_1_at = (StringAttribute) attr_1_res.getAttributeValue();
-      IntegerAttribute attr_1_at = (IntegerAttribute) attr_2_res.getAttributeValue();
+      IntegerAttribute attr_2_at = (IntegerAttribute) attr_2_res.getAttributeValue();
 
       // estraggo stringhe e interi dagli AttributeValue
       String attr_1_st = attr_1_at.getValue();
       int attr_2_int = (int) attr_2_at.getValue();
-
+      */
+    	
+    	EvaluationResult attr_1_res = context.getResourceAttribute(uri_type_integer, uri_id_lista, null);
+    	BagAttribute bag =  (BagAttribute) attr_1_res.getAttributeValue();
+    	Iterator<AttributeValue> it = bag.iterator();
+    	IntegerAttribute attr_1_at = (IntegerAttribute) it.next();
+    	int attr_1_int = (int) attr_1_at.getValue();
+    	
+    	System.out.println("id-lista dalla richiesta: "+attr_1_int);	
+    	
       // -sulla base delle informazioni ricavate, di seguito vanno utilizzate le funzioni di AceQL
       // per ricavare informazioni dal DB
       // -immagino che ritornino degli oggetti che debbano essere poi convertiti
       // in AttributeValue appositi, e poi inseriri in un BagAttribute
 
-      // stub
+      // stub (la collection verrà costruita utilizzando le funzioni di query dal DB di AceQL)
       Collection collection = new HashSet();
 
       Integer attr_3_int = 123;
+      System.out.println("id-proprietario-lista dal DB: "+attr_3_int);
       IntegerAttribute attr_3_at = new IntegerAttribute(attr_3_int);
 
       collection.add(attr_3_at);
 
-      BagAttribute bag_results = new BagAttribute(type, collection);
+      BagAttribute bag_results = new BagAttribute(uri_type_integer, collection);
 
       return new EvaluationResult(bag_results);
     }
-
-    // non dovremmo mai arrivare qui quindi probabilmente dev'essere rimosso
-    return new EvaluationResult(BagAttribute.createEmptyBag(attributeType));
   }
 
 }
