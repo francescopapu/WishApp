@@ -1,0 +1,11 @@
+CREATE TABLE Utente (ID int(10) NOT NULL AUTO_INCREMENT, Nome varchar(255), Cognome varchar(255), PRIMARY KEY (ID)) type=InnoDB;
+CREATE TABLE Prodotto (ID int(10) NOT NULL AUTO_INCREMENT, ListaDesideriID int(10) NOT NULL, Nome varchar(255), PRIMARY KEY (ID)) type=InnoDB;
+CREATE TABLE ListaDesideri (ID int(10) NOT NULL AUTO_INCREMENT, UtenteID int(10) NOT NULL, Nome varchar(255), PRIMARY KEY (ID)) type=InnoDB;
+CREATE TABLE Gruppo (ID int(10) NOT NULL AUTO_INCREMENT, Nome varchar(255), PRIMARY KEY (ID)) type=InnoDB;
+CREATE TABLE Partecipazione (ID int(10) NOT NULL AUTO_INCREMENT, UtenteProprietario tinyint(1) NOT NULL, UtenteID int(10) NOT NULL, GruppoID int(10) NOT NULL, PRIMARY KEY (ID)) type=InnoDB;
+CREATE TABLE Gruppo_IDListeCondivise (GruppoID int(10) NOT NULL, GruppoIndex int(10) NOT NULL, IDListeCondivise int(10) NOT NULL, PRIMARY KEY (GruppoID, GruppoIndex)) type=InnoDB;
+ALTER TABLE Prodotto ADD CONSTRAINT FKProdotto471876 FOREIGN KEY (ListaDesideriID) REFERENCES ListaDesideri (ID);
+ALTER TABLE ListaDesideri ADD CONSTRAINT FKListaDesid479326 FOREIGN KEY (UtenteID) REFERENCES Utente (ID);
+ALTER TABLE Partecipazione ADD CONSTRAINT FKPartecipaz792957 FOREIGN KEY (UtenteID) REFERENCES Utente (ID);
+ALTER TABLE Partecipazione ADD CONSTRAINT FKPartecipaz714368 FOREIGN KEY (GruppoID) REFERENCES Gruppo (ID);
+ALTER TABLE Gruppo_IDListeCondivise ADD CONSTRAINT FKGruppo_IDL170216 FOREIGN KEY (GruppoID) REFERENCES Gruppo (ID);
