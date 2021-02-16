@@ -193,6 +193,7 @@ DROP TABLE IF EXISTS `utente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utente` (
   `ID` int NOT NULL AUTO_INCREMENT,
+  `sub` varchar(255) DEFAULT NULL,
   `Nome` varchar(255) DEFAULT NULL,
   `Cognome` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
@@ -205,7 +206,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES (1,'Mario','Rossi'),(2,'Luca','Bizzarri'),(3,'Antonio','Conte');
+INSERT INTO `utente` VALUES (1,'google-oauth2|110066287984616965246','Francesco','Pietrantonio'),(2,'google-oauth2|103610786215403310600','Francesco','Papulino'),(3,'google-oauth2|112381969180955049796','Carmine','Marra');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 

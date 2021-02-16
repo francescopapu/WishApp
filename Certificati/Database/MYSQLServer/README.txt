@@ -1,0 +1,1 @@
+Questi certificati sono stati generati con il wizard SSL di MYSQL Workbench.
