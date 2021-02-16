@@ -196,6 +196,7 @@ CREATE TABLE `utente` (
   `sub` varchar(255) DEFAULT NULL,
   `Nome` varchar(255) DEFAULT NULL,
   `Cognome` varchar(255) DEFAULT NULL,
+  `IsAdmin` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -206,7 +207,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES (1,'google-oauth2|110066287984616965246','Francesco','Pietrantonio'),(2,'google-oauth2|103610786215403310600','Francesco','Papulino'),(3,'google-oauth2|112381969180955049796','Carmine','Marra');
+INSERT INTO `utente` VALUES (1,'google-oauth2|110066287984616965246','Francesco','Pietrantonio',0),(2,'google-oauth2|103610786215403310600','Francesco','Papulino',0),(3,'google-oauth2|112381969180955049796','Carmine','Marra',0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 
