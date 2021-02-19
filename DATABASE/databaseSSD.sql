@@ -1,3 +1,5 @@
+CREATE USER 'webserver'@'localhost' IDENTIFIED BY 'webserver';
+
 -- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: progettossd
@@ -207,7 +209,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES (1,'google-oauth2|110066287984616965246','Francesco','Pietrantonio',0),(2,'google-oauth2|103610786215403310600','Francesco','Papulino',0),(3,'google-oauth2|112381969180955049796','Carmine','Marra',0);
+INSERT INTO `utente` VALUES (1,'google-oauth2|110066287984616965246','Francesco','Pietrantonio',0),(2,'google-oauth2|103610786215403310600','Francesco','Papulino',0),(3,'google-oauth2|112381969180955049796','Carmine','Marra',0),(4,'auth0|602ccf4defe8da0070509490','Admin','WishApp',1);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 
