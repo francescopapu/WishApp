@@ -6,5 +6,6 @@ Realized as final project for the "Secure System Design" exam.
 
 # Contributors
 
+- Carmine Marra
 - Francesco Maria Papulino
 - Francesco Pietrantonio
