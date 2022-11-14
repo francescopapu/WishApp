@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+    <display-name>XACMLExample</display-name>
+
+    <!--  parametri di configurazione di Auth0  -->
+    <context-param>
+        <param-name>com.auth0.domain</param-name>
+        <param-value>dev-f6qd1tcr.eu.auth0.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientId</param-name>
+        <param-value>O5tjvHG4uMbWccsyXWgqdH4JLVK1HTmM</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.auth0.clientSecret</param-name>
+        <param-value>SZ5syUzH4mC7UUM8tF1Pnvw40syA2YQG4iRePgHiD-aL6y5guBLyz9YhMMXRkt4q</param-value>
+    </context-param>
+
+    <error-page>
+        <location>/</location>
+    </error-page>
+
+</web-app>

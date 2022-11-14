@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "org.akhikhl.gretty" version "2.0.0"
+}
+
+group 'org.SSD'
+version '1.0-SNAPSHOT'
+
+compileJava {
+    sourceCompatibility '1.8'
+    targetCompatibility '1.8'
+}
+
+gretty {
+    httpPort = 3061
+    host = '0.0.0.0'
+    contextPath = '/'
+    servletContainer 'tomcat8'
+
+    httpsEnabled = true
+    // con il comando di seguito si crea un keystore .jks contenente un singolo certificato self signed
+    // keytool -genkey -alias tomcat -keyalg RSA -keystore /path/to/my/mykeystore.keystore
+    sslKeyStorePath = '/Users/frapiet/Desktop/progetto_gradle_esempio/src/main/resources/Keystores/keystore_webserver.keystore'
+    sslKeyStorePassword = 'password'
+
+}
+
+repositories {
+    mavenCentral();
+    maven {
+        url "https://dist.wso2.org/maven2/"
+    }
+}
+
+dependencies {
+    compile group: 'com.auth0', name: 'mvc-auth-commons', version: '1.4.0'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    runtime 'javax.servlet:jstl:1.2'
+    compile group: 'sun-xacml', name: 'sun-xacml', version: '2.0'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+    compile group: 'com.auth0', name: 'java-jwt', version: '3.13.0'
+
+}
